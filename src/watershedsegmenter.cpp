@@ -1,4 +1,4 @@
-#include "watershedsegmenter.h"
+#include "include/watershedsegmenter.h"
 
 WatershedSegmenter::WatershedSegmenter()
 {

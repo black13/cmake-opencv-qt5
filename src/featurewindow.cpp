@@ -1,9 +1,9 @@
-#include "featurewindow.h"
+#include "include/featurewindow.h"
 #include "ui_featurewindow.h"
-#include "edgedetectwindow.h"
-#include "mainwindow.h"
-#include "imagehandler.h"
-#include "featuredetector.h"
+#include "include/edgedetectwindow.h"
+#include "include/mainwindow.h"
+#include "include/imagehandler.h"
+#include "include/featuredetector.h"
 #include <stdlib.h>
 #include <QString>
 #include <QFileDialog>

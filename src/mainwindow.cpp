@@ -1,9 +1,9 @@
-#include "mainwindow.h"
+#include "include/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui_imageholder.h"
-#include "imageholder.h"
+#include "include/imageholder.h"
 #include <QFileDialog>
-#include "filters.h"
+#include "include/filters.h"
 #include "qdebug.h"
 #include "QVBoxLayout"
 #include "QScrollArea"

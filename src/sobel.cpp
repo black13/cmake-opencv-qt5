@@ -1,5 +1,5 @@
 
-#include "sobel.h"
+#include "include/sobel.h"
 /**
  * @brief sobelFilter - taken mostly from OpenCV 2 Computer Vision
  * Application Programming Cookbook, page~ 153.

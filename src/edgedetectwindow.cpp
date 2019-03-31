@@ -1,11 +1,11 @@
-#include "edgedetectwindow.h"
+#include "include/edgedetectwindow.h"
 #include "ui_edgedetectwindow.h"
-#include "mainwindow.h"
-#include "featurewindow.h"
-#include "imagehandler.h"
-#include "sobel.h"
-#include "Canny.h"
-#include "laplace.h"
+#include "include/mainwindow.h"
+#include "include/featurewindow.h"
+#include "include/imagehandler.h"
+#include "include/sobel.h"
+#include "include/Canny.h"
+#include "include/laplace.h"
 
 /**
  * @brief EdgeDetectWindow::EdgeDetectWindow

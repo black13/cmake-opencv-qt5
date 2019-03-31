@@ -1,4 +1,4 @@
-#include "imagehandler.h"
+#include "include/imagehandler.h"
 #include <QString>
 #include <stdlib.h>
 #include <QFileDialog>

@@ -1,5 +1,5 @@
-#include "watershed.h"
-#include "watershedsegmenter.h"
+#include "include/watershed.h"
+#include "include/watershedsegmenter.h"
 
 cv::Mat segmentImage(const cv::Mat& image){
     cv::Mat binary;

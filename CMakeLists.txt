@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.1)
 # Enable C++11
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
-
+set(CMAKE_AUTOMOC TRUE)
 # Define project name
 project(opencv_example_project)
 
@@ -38,32 +38,52 @@ link_directories(
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(project_sources 
-mainwindow.cpp 
-main.cpp
-featurewindow.cpp
-Canny.cpp
-Cartoonifier.cpp
-cornerfinder.cpp
-edgedetectwindow.cpp
-facerecognizer.cpp
-featuredetector.cpp
-featurewindow.cpp
-filters.cpp
-grabcut.cpp
-imagehandler.cpp
-imageholder.cpp
-laplace.cpp
-mainwindow.cpp
-morpher.cpp
-pixelate.cpp
-projectivetransforms.cpp
-rippleeffect.cpp
-sobel.cpp
-watershed.cpp
-watershedsegmenter.cpp)
+./src/mainwindow.cpp 
+./src/main.cpp
+./src/featurewindow.cpp
+./src/Canny.cpp
+./src/Cartoonifier.cpp
+./src/cornerfinder.cpp
+./src/edgedetectwindow.cpp
+./src/facerecognizer.cpp
+./src/featuredetector.cpp
+./src/featurewindow.cpp
+./src/filters.cpp
+./src/grabcut.cpp
+./src/imagehandler.cpp
+./src/imageholder.cpp
+./src/laplace.cpp
+./src/mainwindow.cpp
+./src/morpher.cpp
+./src/pixelate.cpp
+./src/projectivetransforms.cpp
+./src/rippleeffect.cpp
+./src/sobel.cpp
+./src/watershed.cpp
+./src/watershedsegmenter.cpp)
 
 set(project_headers 
-mainwindow.h)
+./include/Canny.h
+./include/Cartoonifier.h
+./include/cornerfinder.h
+./include/edgedetectwindow.h
+./include/facerecognizer.h
+./include/featuredetector.h
+./include/featurewindow.h
+./include/filters.h
+./include/grabcut.h
+./include/imagehandler.h
+./include/imageholder.h
+./include/laplace.h
+./include/mainwindow.h
+./include/morpher.h
+./include/pixelate.h
+./include/projectivetransforms.h
+./include/rippleeffect.h
+./include/sobel.h
+./include/watershed.h
+./include/watershedsegmenter.h
+)
 
 set(project_ui mainwindow.ui 
 imageholder.ui
@@ -76,16 +96,17 @@ featurewindow.ui)
 # wrap the ui file to a c++ header
 qt5_wrap_ui(ui_wrap ${project_ui})
 qt5_wrap_cpp(moc_sources ${project_headers})
-add_executable(GettingStartedWithCmake 
+add_executable(opencv_example_project 
 	${project_sources} 
 	${project_headers}
 	${ui_wrap} 
 	${moc_sources})
-target_link_libraries(GettingStartedWithCmake 
+target_link_libraries(opencv_example_project 
 	PUBLIC
 	Qt5::Core
 	Qt5::Gui 
-	Qt5::Widgets)
+	Qt5::Widgets
+  ${OpenCV_LIBS})
 
 
 # need this to include the auto generated ui_mainwindow.h 

@@ -1,6 +1,6 @@
-#include "Cartoonifier.h"
-#include "pixelate.h"
-#include "Canny.h"
+#include "include/Cartoonifier.h"
+#include "include/pixelate.h"
+#include "include/Canny.h"
 
 using namespace cv;
 

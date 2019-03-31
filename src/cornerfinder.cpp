@@ -1,4 +1,4 @@
-#include "cornerfinder.h"
+#include "include/cornerfinder.h"
 
 /**
  * @brief sobelFilter - taken mostly from OpenCV 2 Computer Vision

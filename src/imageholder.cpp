@@ -1,4 +1,4 @@
-#include "imageholder.h"
+#include "include/imageholder.h"
 #include "ui_imageholder.h"
 
 ImageHolder::ImageHolder(QWidget *parent) :
