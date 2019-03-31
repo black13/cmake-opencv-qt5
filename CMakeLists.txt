@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.1)
+
+# Enable C++11
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 project(testproject)
 
@@ -7,16 +11,28 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
-# Find the QtWidgets library
-find_package(Qt5Widgets)
+find_package(OpenCV REQUIRED)
+
+include_directories(${OpenCV_INCLUDE_DIRS})
+find_package(Qt5 COMPONENTS REQUIRED Quick Qml Core Gui Widgets)
+
+# If the package has been found, several variables will
+# be set, you can find the full list with descriptions
+# in the OpenCVConfig.cmake file.
+# Print some message showing some of them
+message(STATUS "OpenCV library status:")
+message(STATUS "    config: ${OpenCV_DIR}")
+message(STATUS "    version: ${OpenCV_VERSION}")
+message(STATUS "    libraries: ${OpenCV_LIBS}")
+message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
 set(SOURCES
-  src/main.cpp
-  src/mainwindow.cpp
+  main.cpp
+  mainwindow.cpp
 )
 
 set(FORMS
-  forms/mainwindow.ui
+  mainwindow.ui
 )
 qt5_wrap_ui(FORM_H ${FORMS})
 
