@@ -1,19 +1,18 @@
+# cmake needs this line
 cmake_minimum_required(VERSION 3.1)
 
 # Enable C++11
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-project(testproject)
+# Define project name
+project(opencv_example_project)
 
-# Find includes in corresponding build directories
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# Instruct CMake to run moc automatically when needed.
-set(CMAKE_AUTOMOC ON)
-
+# Find OpenCV, you may need to set OpenCV_DIR variable
+# to the absolute path to the directory containing OpenCVConfig.cmake file
+# via the command line or GUI
 find_package(OpenCV REQUIRED)
 
-include_directories(${OpenCV_INCLUDE_DIRS})
 find_package(Qt5 COMPONENTS REQUIRED Quick Qml Core Gui Widgets)
 
 # If the package has been found, several variables will
@@ -26,19 +25,69 @@ message(STATUS "    version: ${OpenCV_VERSION}")
 message(STATUS "    libraries: ${OpenCV_LIBS}")
 message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
-set(SOURCES
-  main.cpp
-  mainwindow.cpp
+include_directories(
+    ${OpenCV_INCLUDE_DIRS}
 )
 
-set(FORMS
-  mainwindow.ui
+link_directories(
+    ${OpenCV_LIB_DIR}
 )
-qt5_wrap_ui(FORM_H ${FORMS})
 
-# Tell CMake to create the helloworld executable
-add_executable(helloworld ${SOURCES} ${FORM_H})
+# Declare the executable target built from your sources
 
-# Use the Widgets module from Qt 5.
-target_link_libraries(helloworld Qt5::Widgets)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+set(project_sources 
+mainwindow.cpp 
+main.cpp
+featurewindow.cpp
+Canny.cpp
+Cartoonifier.cpp
+cornerfinder.cpp
+edgedetectwindow.cpp
+facerecognizer.cpp
+featuredetector.cpp
+featurewindow.cpp
+filters.cpp
+grabcut.cpp
+imagehandler.cpp
+imageholder.cpp
+laplace.cpp
+mainwindow.cpp
+morpher.cpp
+pixelate.cpp
+projectivetransforms.cpp
+rippleeffect.cpp
+sobel.cpp
+watershed.cpp
+watershedsegmenter.cpp)
+
+set(project_headers 
+mainwindow.h)
+
+set(project_ui mainwindow.ui 
+imageholder.ui
+edgedetectwindow.ui
+imageholder.ui
+imagewidget.ui
+featuredetectwindow.ui
+featurewindow.ui)
+
+# wrap the ui file to a c++ header
+qt5_wrap_ui(ui_wrap ${project_ui})
+qt5_wrap_cpp(moc_sources ${project_headers})
+add_executable(GettingStartedWithCmake 
+	${project_sources} 
+	${project_headers}
+	${ui_wrap} 
+	${moc_sources})
+target_link_libraries(GettingStartedWithCmake 
+	PUBLIC
+	Qt5::Core
+	Qt5::Gui 
+	Qt5::Widgets)
+
+
+# need this to include the auto generated ui_mainwindow.h 
+# file from the qt5_wrap_ui call below.
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
